@@ -1,6 +1,6 @@
-from rest_framework import generics
-from .models import Menu
-from .serializers import MenuSerializer
+from rest_framework import generics, viewsets
+from .models import *
+from .serializers import *
 
 class MenuItemView(generics.ListCreateAPIView):
     queryset = Menu.objects.all()
@@ -11,3 +11,7 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     # The RetrieveUpdateDestroyAPIView automatically provides 'get', 'put', and 'delete' methods
+
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
